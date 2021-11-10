@@ -10,3 +10,4 @@ if ($_SERVER['REQUEST_METHOD']=== 'OPTIONS') {
     return 0;
 }
 
+?>
