@@ -46,4 +46,6 @@ try {
     $error = array('error' => $pdoex->getMessage());
     print json_encode($error);
 }
+
+/* fixed! */
 ?>
