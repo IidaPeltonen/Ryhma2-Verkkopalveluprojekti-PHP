@@ -25,18 +25,18 @@ INSERT INTO kirja VALUES (12, 'Lava - kauhu ja himo ','Krista Launor',2017,'Suom
 
 /* ASIAKAS */
 
-CREATE TABLE asiakas (astunnus CHAR(6),asnimi CHAR(50) NOT NULL,asosoite CHAR(50) NOT NULL,postinro CHAR(5), postitmp CHAR(10), puhelin CHAR(10),email CHAR(30),CONSTRAINT asiakas_pk PRIMARY KEY (astunnus),CONSTRAINT asnimi_un UNIQUE (asnimi)) ;
-INSERT INTO asiakas VALUES ('iipi','Iida Peltonen','Iidantie 9','33720','Tampere',112, 'n0peii00@dtudents.oamk.fi') ;
-INSERT INTO asiakas VALUES ('speedy','Speedy Keinonen','Hornantie 666','38300','Mänttä',0401234556, 'speedy@speedy.fi') ;
-INSERT INTO asiakas VALUES ('seppo','Seppo Taalasmaa','Tie 6','35300','Turku',0404567892, 'seppo@salkkarit.fi') ;
+CREATE TABLE asiakas (asid integer auto_increment, astunnus CHAR(10),asnimi CHAR(50) NOT NULL,asosoite CHAR(50) NOT NULL,postinro CHAR(5), postitmp CHAR(10), puhelin CHAR(10),email CHAR(30),CONSTRAINT asiakas_pk PRIMARY KEY (asid),CONSTRAINT asnimi_un UNIQUE (asnimi)) ;
+INSERT INTO asiakas VALUES (1, 'iipi','Iida Peltonen','Iidantie 9','33720','Tampere',112, 'n0peii00@dtudents.oamk.fi') ;
+INSERT INTO asiakas VALUES (2, 'speedy','Speedy Keinonen','Hornantie 666','38300','Mänttä',0401234556, 'speedy@speedy.fi') ;
+INSERT INTO asiakas VALUES (3, 'seppo','Seppo Taalasmaa','Tie 6','35300','Turku',0404567892, 'seppo@salkkarit.fi') ;
 
 /* TILAUS */
 
-CREATE TABLE tilaus (tilausnro INTEGER auto_increment NOT NULL,astunnus CHAR(6) NOT NULL, pvm DATETIME NOT NULL, tila CHAR(1),CONSTRAINT tilaus_pk PRIMARY KEY (tilausnro),CONSTRAINT tilaus_asiakas_fk FOREIGN KEY (astunnus)  REFERENCES asiakas (astunnus)) ; 
-INSERT INTO tilaus VALUES (1,'iipi','2021-11-08','T');
-INSERT INTO tilaus VALUES (2,'iipi','2021-11-08','L');
-INSERT INTO tilaus VALUES (3,'seppo','2021-11-09','M');
-INSERT INTO tilaus VALUES (4,'speedy','2021-11-01','T');
+CREATE TABLE tilaus (tilausnro INTEGER auto_increment NOT NULL,asid integer NOT NULL, pvm DATETIME NOT NULL, tila CHAR(1),CONSTRAINT tilaus_pk PRIMARY KEY (tilausnro),CONSTRAINT tilaus_asiakas_fk FOREIGN KEY (asid)  REFERENCES asiakas (asid)) ; 
+INSERT INTO tilaus VALUES (1,1,'2021-11-08','T');
+INSERT INTO tilaus VALUES (2,1,'2021-11-08','L');
+INSERT INTO tilaus VALUES (3,2,'2021-11-09','M');
+INSERT INTO tilaus VALUES (4,3,'2021-11-01','T');
 
 
 
