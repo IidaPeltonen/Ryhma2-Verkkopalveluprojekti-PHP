@@ -11,7 +11,7 @@ function openDb(): object {
     return $db;
 }
 
-function selectAsJson(object $db, string $sql): int {
+function selectAsJson(object $db, string $sql): void {
     $query = $db->query($sql);
     $results = $query->fetchAll(PDO::FETCH_ASSOC);
     header('HTTP/1.1 200 OK');
