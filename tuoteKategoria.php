@@ -5,7 +5,7 @@ require_once 'inc/functions.php';
 require_once 'inc/headers.php';
 
 try {
-    $db = openDb();
+    $db = new PDO('mysql:host=localhost;dbname=kauppa;charset=utf8','root','');
     $sql = "select distinct trnimi from kirja";
     $query = $db->query($sql);
     $results = $query->fetchAll(PDO::FETCH_ASSOC);
