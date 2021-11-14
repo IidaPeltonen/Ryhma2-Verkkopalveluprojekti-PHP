@@ -4,7 +4,7 @@ header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
 $db = new PDO('mysql:host=localhost;dbname=kauppa;charset=utf8','root','');
-$sql = "SELECT distinct kirja.kirjaid, kirjanimi,kirjailija, vuosi, kieli, kustantaja, trnimi,  kuvaus, hinta, saldo, kuva, SUM(kpl)
+$sql = "SELECT distinct kirja.kirjaid, kirjanimi,kirjailija, vuosi, kieli, kustantaja, trnimi,  kuvaus, hinta, saldo, kuva, SUM(kpl) AS SUM
     FROM tilausrivi, kirja
     where kirja.kirjaid = tilausrivi.kirjaid
     GROUP by kirjaid
