@@ -1,7 +1,3 @@
-drop database if exists kauppa;
-create database kauppa;
-use kauppa;
-
 
 /* KIRJA */
 
