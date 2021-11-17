@@ -4,6 +4,9 @@
 require_once 'inc/functions.php';
 require_once 'inc/headers.php';
 
+header('Access-Control-Allow-Origin: *');
+header('Content-Type: application/json');
+
 try {
     $db = new PDO('mysql:host=localhost;dbname=kauppa;charset=utf8','root','');
     $sql = "select * from category";
