@@ -31,7 +31,7 @@ function returnError(PDOException $pdoex): void {
 
 function checkUser(PDO $dbcon, $username, $passwd){
 
-    //Sanitoidaan. Lisätty tuntien jälkeen
+    //Sanitoidaan
     $username = filter_var($username, FILTER_SANITIZE_STRING);
     $passwd = filter_var($passwd, FILTER_SANITIZE_STRING);
 
@@ -44,8 +44,8 @@ function checkUser(PDO $dbcon, $username, $passwd){
 
         //Käydään rivit läpi (max yksi rivi tässä tapauksessa) 
         foreach($rows as $row){
-            $pw = $row["password"];  //password sarakkeen tieto (hash salasana tietokannassa)
-            if( $pw === $passwd ){  //tarkistetaan salasana tietokannan hashia vasten
+            $pw = $row["password"];  //password sarakkeen tieto
+            if( $pw === $passwd ){  //tarkistetaan salasana
                 return true;
             }
         }
