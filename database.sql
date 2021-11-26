@@ -70,3 +70,7 @@ INSERT INTO tilausrivi VALUES (3,2,20,1);
 INSERT INTO tilausrivi VALUES (3,3,3,3);
 INSERT INTO tilausrivi VALUES (4,1,2,1); 
 
+/* ADMIN */
+CREATE TABLE user (firstname VARCHAR(50), lastname VARCHAR(50), username VARCHAR(50),password VARCHAR(10));
+INSERT INTO user VALUES ('Iso','Pomo','admin','admin'); 
+
