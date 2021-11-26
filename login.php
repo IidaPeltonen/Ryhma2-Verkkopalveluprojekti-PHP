@@ -10,8 +10,8 @@
 
 use Firebase\JWT\JWT;
 
-require('headers.php');
-require('functions.php');
+require_once 'inc/functions.php';
+require_once 'inc/headers.php';
 
 //Tarkistetaan tuleeko palvelimelle basic login tiedot (authorization: Basic asfkjsafdjsajflkasj)
 if( isset($_SERVER['PHP_AUTH_USER']) ){

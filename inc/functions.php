@@ -45,7 +45,7 @@ function checkUser(PDO $dbcon, $username, $passwd){
         //Käydään rivit läpi (max yksi rivi tässä tapauksessa) 
         foreach($rows as $row){
             $pw = $row["password"];  //password sarakkeen tieto (hash salasana tietokannassa)
-            if( password_verify($passwd, $pw) ){  //tarkistetaan salasana tietokannan hashia vasten
+            if( $pw === $passwd ){  //tarkistetaan salasana tietokannan hashia vasten
                 return true;
             }
         }
