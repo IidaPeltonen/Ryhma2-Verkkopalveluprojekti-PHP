@@ -11,7 +11,7 @@ $kustantaja = filter_var($input->kustantaja,FILTER_SANITIZE_STRING);
 $kuvaus = filter_var($input->kuvaus,FILTER_SANITIZE_STRING);
 $hinta = filter_var($input->hinta,FILTER_SANITIZE_NUMBER_INT);
 $saldo = filter_var($input->saldo,FILTER_SANITIZE_NUMBER_INT);
-$category_id = filter_var($input->trnimi,FILTER_SANITIZE_STRING);
+$category_id = filter_var($input->category_id,FILTER_SANITIZE_NUMBER_INT);
 
 try {
     $db= openDb();
@@ -27,7 +27,7 @@ try {
     $query->bindValue(':category_id', $category_id, PDO::PARAM_STR);
     $query->execute();
     header('HTTP/1.1 200 OK');
-    $data = array('kirjaid' => $db->lastInsertId(),'kirjanimi' => $kirjanimi, 'kirjailija' => $kirjailija, 'vuosi' => $vuosi, 'kieli' => $kieli, 'kustantaja' => $kustantaja, 'kuvaus' => $kuvaus, 'hinta' => $hinta, 'saldo' => $saldo, 'trnimi' => $trnimi);
+    $data = array('kirjaid' => $db->lastInsertId(),'kirjanimi' => $kirjanimi, 'kirjailija' => $kirjailija, 'vuosi' => $vuosi, 'kieli' => $kieli, 'kustantaja' => $kustantaja, 'kuvaus' => $kuvaus, 'hinta' => $hinta, 'saldo' => $saldo, 'category_id' => $category_id);
     print json_encode($data);
 } catch (PDOException $pdoex) {
     returnError($pdoex);
