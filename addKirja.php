@@ -16,7 +16,9 @@ $category_id = filter_var($input->category_id,FILTER_SANITIZE_NUMBER_INT);
 
 try {
     $db= openDb();
-    $query = $db->prepare('insert into kirja (kirjanimi, kirjailija, vuosi, kieli, kustantaja, kuvaus, hinta, saldo, category_id) values (:kirjanimi, :kirjailija, :vuosi, :kieli, :kustantaja, :kuvaus, :hinta, :saldo, :kuva, :category_id)');
+    $query = $db->prepare('insert into kirja (kirjanimi, kirjailija, vuosi, kieli, 
+    kustantaja, kuvaus, hinta, saldo, kuva, category_id) values (:kirjanimi, :kirjailija, :vuosi, 
+    :kieli, :kustantaja, :kuvaus, :hinta, :saldo, :kuva, :category_id)');
     $query->bindValue(':kirjanimi',$kirjanimi, PDO::PARAM_STR);
     $query->bindValue(':kirjailija',$kirjailija, PDO::PARAM_STR);
     $query->bindValue(':vuosi', $vuosi, PDO::PARAM_INT);
@@ -29,7 +31,9 @@ try {
     $query->bindValue(':category_id', $category_id, PDO::PARAM_STR);
     $query->execute();
     header('HTTP/1.1 200 OK');
-    $data = array('kirjaid' => $db->lastInsertId(),'kirjanimi' => $kirjanimi, 'kirjailija' => $kirjailija, 'vuosi' => $vuosi, 'kieli' => $kieli, 'kustantaja' => $kustantaja, 'kuvaus' => $kuvaus, 'hinta' => $hinta, 'saldo' => $saldo, 'kuva' => $kuva, 'category_id' => $category_id);
+    $data = array('kirjaid' => $db->lastInsertId(),'kirjanimi' => $kirjanimi, 'kirjailija' => $kirjailija, 
+    'vuosi' => $vuosi, 'kieli' => $kieli, 'kustantaja' => $kustantaja, 'kuvaus' => $kuvaus, 
+    'hinta' => $hinta, 'saldo' => $saldo, 'kuva' => $kuva, 'category_id' => $category_id);
     print json_encode($data);
 } catch (PDOException $pdoex) {
     returnError($pdoex);

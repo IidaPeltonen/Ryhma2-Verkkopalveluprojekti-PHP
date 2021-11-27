@@ -30,7 +30,7 @@ if( isset( $requestHeaders['authorization'] ) ){
             $username = $decoded->sub;
 
             //Lähetetään clientille ykstyisen resurssi, koska oikeus tarkistettu
-            echo  json_encode( array("message"=>"Moi ".$username , "!") ); /* miksei huutomerkki toimi? */
+            echo  json_encode( array("message"=>"Moi ".$username ."!") ); 
             
         }catch(Exception ){
             echo  json_encode( array("message"=>"Ei käyttöoikeutta!") );
