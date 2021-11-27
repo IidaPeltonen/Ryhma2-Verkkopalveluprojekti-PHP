@@ -30,10 +30,10 @@ if( isset( $requestHeaders['authorization'] ) ){
             $username = $decoded->sub;
 
             //Lähetetään clientille ykstyisen resurssi, koska oikeus tarkistettu
-            echo  json_encode( array("message"=>"This is your private resource ".$username) );
+            echo  json_encode( array("message"=>"Moi ".$username , "!") ); /* miksei huutomerkki toimi? */
             
-        }catch(Exception $e){
-            echo  json_encode( array("message"=>"No access!!") );
+        }catch(Exception ){
+            echo  json_encode( array("message"=>"Ei käyttöoikeutta!") );
         }
 
     }
