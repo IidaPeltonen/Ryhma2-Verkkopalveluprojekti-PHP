@@ -1,8 +1,4 @@
 <?php
-/**
- * Tälle tiedostolle tulee pyyntö resurssista. Resurssi annetaan vain, jos 
- * mukana on validi JWT bearer token.
- */
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -19,7 +15,6 @@ if( isset( $requestHeaders['authorization'] ) ){
 
     //Halkaistaan osiin Bearer ja token
     $auth_value = explode(' ', $requestHeaders['authorization']);
-
 
     //Tarkistetaan onko Bearer sanaa
     if( $auth_value[0] === 'Bearer' ){
@@ -44,6 +39,3 @@ if( isset( $requestHeaders['authorization'] ) ){
     }
 
 }
-
-
-?>

@@ -30,7 +30,6 @@ function returnError(PDOException $pdoex): void {
 }
 
 function checkUser(PDO $dbcon, $username, $passwd){
-
     //Sanitoidaan
     $username = filter_var($username, FILTER_SANITIZE_STRING);
     $passwd = filter_var($passwd, FILTER_SANITIZE_STRING);
@@ -39,7 +38,6 @@ function checkUser(PDO $dbcon, $username, $passwd){
         $sql = "SELECT password FROM user WHERE username=?";  //komento, arvot parametreina
         $prepare = $dbcon->prepare($sql);   //valmistellaan
         $prepare->execute(array($username));  //kysely tietokantaan
-
         $rows = $prepare->fetchAll(); //haetaan tulokset (voitaisiin hakea myös eka rivi fetch ja tarkistus)
 
         //Käydään rivit läpi (max yksi rivi tässä tapauksessa) 
