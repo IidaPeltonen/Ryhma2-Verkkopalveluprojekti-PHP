@@ -1,20 +1,18 @@
 <?php
-
 require_once './inc/headers.php';
 require_once './inc/functions.php';
 
 $input = json_decode(file_get_contents('php://input'));
-$asid = filter_var($input->asid,FILTER_SANITIZE_NUMBER_INT);
+$name = filter_var($input->name,FILTER_SANITIZE_STRING);
 
 try {
-    $db= openDb();
-    $query = $db->prepare('delete from asiakas where asid=(:asid)');
-    $query->bindValue(':asid', $asid, PDO::PARAM_INT);
+    $db= openDb();    
+    $query = $db->prepare('insert into category (name) values (:name)');
+    $query->bindValue(':name',$name, PDO::PARAM_STR);
     $query->execute();
     header('HTTP/1.1 200 OK');
-    $data = array('asid' => $asid);
+    $data = array('id' => $db->lastInsertId(),'name' => $name);
     print json_encode($data);
 } catch (PDOException $pdoex) {
     returnError($pdoex);
 }
-

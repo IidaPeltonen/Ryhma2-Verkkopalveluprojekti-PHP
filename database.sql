@@ -1,11 +1,8 @@
 drop database if exists kauppa;
-
 create database kauppa;
-
 use kauppa;
 
 /* TUOTERYHMÄ */
-
 create table category (
     id int primary key auto_increment,
     name varchar(100) not null
@@ -17,16 +14,19 @@ INSERT INTO category(name) value('Fantasiakirjallisuus');
 
 
 /* KIRJA */
-
 CREATE TABLE kirja (
     kirjaid int primary key auto_increment,
     kirjanimi CHAR(100) NOT NULL,
     kirjailija CHAR(100) NOT NULL,
     vuosi SMALLINT,kieli CHAR(10) NOT NULL,
-    kustantaja CHAR(100) NOT NULL,kuvaus CHAR(255) NOT NULL,
-    hinta DECIMAL(5,2),saldo SMALLINT, kuva CHAR(225),
+    kustantaja CHAR(100) NOT NULL,
+    kuvaus CHAR(255) NOT NULL,
+    hinta DECIMAL(5,2),
+    saldo SMALLINT,
+    kuva CHAR(225),
     CONSTRAINT kirjanimi_un UNIQUE (kirjanimi), 
-    category_id int not null, index category_id(category_id),
+    category_id int not null,
+    index category_id(category_id),
     foreign key (category_id) references category(id) on delete restrict
     );
 INSERT INTO kirja VALUES (1, 'Piina', 'Stephen King', 1989, 'Suomi', 'Tammi', 'Kirjailija Paul Sheldon joutuu auto-onnettomuuteen, mutta sairaalan sijasta hän päätyy omituisen ihailijan hoidettavaksi. Piina vain pahenee, kun Paul yrittää paeta ja saa samalla selville kuinka vaarallinen Annie todella onkaan.', 19.99,10, 'https://www.students.oamk.fi/~n0peii00/kuvia/piina.png', 1);
@@ -51,7 +51,6 @@ INSERT INTO kirja VALUES (13, 'Mitä enemmän verta','Stephen King',2021,'Suomi'
 INSERT INTO kirja VALUES (12, 'Lava - kauhu ja himo ','Krista Launor',2017,'Suomi', 'Avain', 'Kirjassa esiintyminen nähdään laajasti; se liittyy luennointiin mutta myös juhlapuheisiin, työpaikkahaastatteluihin, pitchauksiin ja myyntipresentaatioihin.', 28.30,4, 'https://www.students.oamk.fi/~n0peii00/kuvia/lava.png',1);
 
 /* ASIAKAS */
-
 CREATE TABLE asiakas (
     asid integer primary key auto_increment,
     astunnus CHAR(10),
@@ -68,7 +67,6 @@ INSERT INTO asiakas VALUES (2, 'speedy','Speedy Keinonen','Hornantie 666','38300
 INSERT INTO asiakas VALUES (3, 'seppo','Seppo Taalasmaa','Tie 6','35300','Turku',0404567892, 'seppo@salkkarit.fi') ;
 
 /* TILAUS */
-
 CREATE TABLE tilaus (
     tilausnro INTEGER primary key auto_increment NOT NULL,
     asid integer NOT NULL,
@@ -81,14 +79,12 @@ INSERT INTO tilaus VALUES (2,1,'2021-11-08','L');
 INSERT INTO tilaus VALUES (3,2,'2021-11-09','M');
 INSERT INTO tilaus VALUES (4,3,'2021-11-01','T');
 
-
-
 /* TILAUSRIVI */
-
 CREATE TABLE tilausrivi (
     tilausnro INTEGER NOT NULL,
     rivinro SMALLINT NOT NULL,
-    kirjaid INTEGER, kpl INTEGER,
+    kirjaid INTEGER,
+    kpl INTEGER,
     CONSTRAINT tilausrivi_pk PRIMARY KEY (tilausnro, rivinro),
     CONSTRAINT tilausrivi_kirja_fk FOREIGN KEY (kirjaid) REFERENCES kirja (kirjaid)
     );
@@ -100,4 +96,13 @@ INSERT INTO tilausrivi VALUES (3,1,7,9);
 INSERT INTO tilausrivi VALUES (3,2,20,1);
 INSERT INTO tilausrivi VALUES (3,3,3,3);
 INSERT INTO tilausrivi VALUES (4,1,2,1); 
+
+/* ADMIN */
+CREATE TABLE user (
+    firstname VARCHAR(50),
+    lastname VARCHAR(50),
+    username VARCHAR(50),
+    password VARCHAR(10)
+    );
+INSERT INTO user VALUES ('Iso','Pomo','admin','admin'); 
 
