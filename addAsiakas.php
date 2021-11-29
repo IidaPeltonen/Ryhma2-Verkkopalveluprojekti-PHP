@@ -13,7 +13,10 @@ $email = filter_var($input->email,FILTER_SANITIZE_STRING);
 
 try {
     $db= openDb();    
-    $query = $db->prepare('insert into asiakas (astunnus, asnimi, asosoite, postinro, postitmp, puhelin, email) values (:astunnus, :asnimi, :asosoite, :postinro, :postitmp, :puhelin, :email)');
+    $query = $db->prepare('insert into asiakas (astunnus, asnimi, 
+    asosoite, postinro, postitmp, puhelin, email) 
+    values (:astunnus, :asnimi, :asosoite, :postinro, 
+    :postitmp, :puhelin, :email)');
     $query->bindValue(':astunnus',$astunnus, PDO::PARAM_STR);
     $query->bindValue(':asnimi',$asnimi, PDO::PARAM_STR);
     $query->bindValue(':asosoite', $asosoite, PDO::PARAM_STR);
