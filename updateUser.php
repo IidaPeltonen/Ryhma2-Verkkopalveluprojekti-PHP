@@ -12,7 +12,7 @@ $password = filter_var($input->password,FILTER_SANITIZE_STRING);
 try {
     $db= openDb();
     $query = $db->prepare('update user set userid=:userid,firstname=:firstname, lastname=:lastname, 
-    username=:username, password=:password');
+    username=:username, password=:password where userid=:userid');
     $query->bindValue(':userid',$userid, PDO::PARAM_INT);
     $query->bindValue(':firstname',$firstname, PDO::PARAM_STR);
     $query->bindValue(':lastname',$lastname, PDO::PARAM_STR);
