@@ -10,7 +10,7 @@ $vuosi = filter_var($input->vuosi,FILTER_SANITIZE_NUMBER_INT);
 $kieli = filter_var($input->kieli,FILTER_SANITIZE_STRING);
 $kustantaja = filter_var($input->kustantaja,FILTER_SANITIZE_STRING);
 $kuvaus = filter_var($input->kuvaus,FILTER_SANITIZE_STRING);
-$hinta = filter_var($input->hinta,FILTER_SANITIZE_NUMBER_INT);
+$hinta = filter_var($input->hinta,FILTER_SANITIZE_STRING);
 $saldo = filter_var($input->saldo,FILTER_SANITIZE_NUMBER_INT);
 $kuva = filter_var($input->kuva,FILTER_SANITIZE_STRING);
 $category_id = filter_var($input->category_id,FILTER_SANITIZE_NUMBER_INT); 
@@ -26,7 +26,7 @@ try {
     $query->bindValue(':kieli',$kieli, PDO::PARAM_STR);
     $query->bindValue(':kustantaja',$kustantaja, PDO::PARAM_STR);
     $query->bindValue(':kuvaus',$kuvaus, PDO::PARAM_STR);
-    $query->bindValue(':hinta', $hinta, PDO::PARAM_INT);
+    $query->bindValue(':hinta', $hinta, PDO::PARAM_STR);
     $query->bindValue(':saldo', $saldo, PDO::PARAM_INT);
     $query->bindValue(':kuva', $kuva, PDO::PARAM_STR);
     $query->bindValue(':category_id', $category_id, PDO::PARAM_INT); 
