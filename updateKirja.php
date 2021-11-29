@@ -19,7 +19,7 @@ try {
     $db= openDb();
     $query = $db->prepare('update kirja set kirjanimi=:kirjanimi,kirjailija=:kirjailija, 
         vuosi=:vuosi, kieli=:kieli, kustantaja=:kustantaja, kuvaus=:kuvaus, hinta=:hinta, 
-        saldo=:saldo, kuva=:kuva/* , category_id=:category_id */ where kirjaid=:kirjaid');
+        saldo=:saldo, kuva=:kuva where kirjaid=:kirjaid');
     $query->bindValue(':kirjanimi',$kirjanimi, PDO::PARAM_STR);
     $query->bindValue(':kirjailija',$kirjailija, PDO::PARAM_STR);
     $query->bindValue(':vuosi', $vuosi, PDO::PARAM_INT);
