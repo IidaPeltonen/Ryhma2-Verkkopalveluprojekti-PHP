@@ -4,7 +4,8 @@ require_once './inc/functions.php';
 
 // Luetaan tilauksen tiedot JSON-muodossa
 $input = json_decode(file_get_contents('php://input'));
-$asnimi = filter_var($input->asnimi,FILTER_SANITIZE_STRING);
+$asetunimi = filter_var($input->asetunimi,FILTER_SANITIZE_STRING);
+$assukunimi = filter_var($input->assukunimi,FILTER_SANITIZE_STRING);
 $asosoite = filter_var($input->asosoite,FILTER_SANITIZE_STRING);
 $postinro = filter_var($input->postinro,FILTER_SANITIZE_STRING);
 $postitmp = filter_var($input->postitmp,FILTER_SANITIZE_STRING);
@@ -20,9 +21,10 @@ try {
     // aloitetaan transaktio
     $db->beginTransaction();
     // viedään asiakkaan tiedot tietokantaan
-    $sql = "insert into asiakas (asnimi,asosoite,postinro,postitmp,puhelin,email) values
+    $sql = "insert into asiakas (asetunimi, assukunimi ,asosoite,postinro,postitmp,puhelin,email) values
     ('" .
-        filter_var($asnimi,FILTER_SANITIZE_STRING) . "','" .
+        filter_var($asetunimi,FILTER_SANITIZE_STRING) . "','" .
+        filter_var($assukunimi,FILTER_SANITIZE_STRING) . "','" .
         filter_var($asosoite,FILTER_SANITIZE_STRING) . "','" .
         filter_var($postinro,FILTER_SANITIZE_STRING) . "','" .
         filter_var($postitmp,FILTER_SANITIZE_STRING) . "','" .

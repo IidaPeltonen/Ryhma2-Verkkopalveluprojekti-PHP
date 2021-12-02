@@ -38,10 +38,10 @@ INSERT INTO kirja VALUES (13, 'Mitä enemmän verta','Stephen King',2021,'Suomi'
 INSERT INTO kirja VALUES (12, 'Lava - kauhu ja himo ','Krista Launor',2017,'Suomi', 'Avain', 'Kirjassa esiintyminen nähdään laajasti; se liittyy luennointiin mutta myös juhlapuheisiin, työpaikkahaastatteluihin, pitchauksiin ja myyntipresentaatioihin.', 28.30,4, 'https://www.students.oamk.fi/~n0peii00/kuvia/lava.png',1);
 
 /* ASIAKAS */
-CREATE TABLE asiakas (asid integer primary key auto_increment, astunnus CHAR(10),asnimi CHAR(50) NOT NULL,asosoite CHAR(50) NOT NULL,postinro CHAR(5), postitmp CHAR(10), puhelin CHAR(10),email CHAR(30),CONSTRAINT asnimi_un UNIQUE (asnimi)) ;
-INSERT INTO asiakas VALUES (1, 'iipi','Iida Peltonen','Iidantie 9','33720','Tampere',112, 'n0peii00@dtudents.oamk.fi') ;
-INSERT INTO asiakas VALUES (2, 'speedy','Speedy Keinonen','Hornantie 666','38300','Mänttä',0401234556, 'speedy@speedy.fi') ;
-INSERT INTO asiakas VALUES (3, 'seppo','Seppo Taalasmaa','Tie 6','35300','Turku',0404567892, 'seppo@salkkarit.fi') ;
+CREATE TABLE asiakas (asid integer primary key auto_increment, astunnus CHAR(10), asetunimi CHAR(50) NOT NULL, assukunimi CHAR(50) NOT NULL,asosoite CHAR(50) NOT NULL,postinro CHAR(5), postitmp CHAR(10), puhelin CHAR(10),email CHAR(30)) ;
+INSERT INTO asiakas VALUES (1, 'iipi','Iida','Peltonen','Iidantie 9','33720','Tampere',112, 'n0peii00@dtudents.oamk.fi') ;
+INSERT INTO asiakas VALUES (2, 'speedy','Speedy','Keinonen','Hornantie 666','38300','Mänttä',0401234556, 'speedy@speedy.fi') ;
+INSERT INTO asiakas VALUES (3, 'seppo','Seppo','Taalasmaa','Tie 6','35300','Turku',0404567892, 'seppo@salkkarit.fi') ;
 
 /* TILAUS */
 CREATE TABLE tilaus (tilausnro INTEGER primary key auto_increment NOT NULL,asid integer NOT NULL, pvm timestamp default current_timestamp, tila CHAR(1),CONSTRAINT tilaus_asiakas_fk FOREIGN KEY (asid)  REFERENCES asiakas (asid)) ; 
