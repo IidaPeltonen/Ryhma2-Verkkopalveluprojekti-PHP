@@ -45,10 +45,10 @@ INSERT INTO asiakas VALUES (3, 'seppo','Seppo','Taalasmaa','Tie 6','35300','Turk
 
 /* TILAUS */
 CREATE TABLE tilaus (tilausnro INTEGER primary key auto_increment NOT NULL,asid integer NOT NULL, pvm timestamp default current_timestamp, tila CHAR(1),CONSTRAINT tilaus_asiakas_fk FOREIGN KEY (asid)  REFERENCES asiakas (asid)) ; 
-INSERT INTO tilaus VALUES (1,1,'2021-11-08','T');
-INSERT INTO tilaus VALUES (2,1,'2021-11-08','L');
-INSERT INTO tilaus VALUES (3,2,'2021-11-09','M');
-INSERT INTO tilaus VALUES (4,3,'2021-11-01','T');
+INSERT INTO tilaus VALUES (1,1,'2021-11-08 20:17:04','T');
+INSERT INTO tilaus VALUES (2,1,'2021-11-08 10:29:01','L');
+INSERT INTO tilaus VALUES (3,2,'2021-11-09 08:45:02','M');
+INSERT INTO tilaus VALUES (4,3,'2021-11-01 12:51:09','T');
 
 /* TILAUSRIVI */
 CREATE TABLE tilausrivi (tilausnro INTEGER NOT NULL,kirjaid INTEGER, kpl INTEGER,CONSTRAINT tilausrivi_fk FOREIGN KEY (tilausnro) REFERENCES tilaus(tilausnro), CONSTRAINT tilausrivi_kirja_fk FOREIGN KEY (kirjaid)   REFERENCES kirja (kirjaid));
