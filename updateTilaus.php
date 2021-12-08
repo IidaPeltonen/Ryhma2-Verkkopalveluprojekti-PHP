@@ -12,7 +12,6 @@ try {
     $query = $db->prepare('update tilaus set asid=:asid,tila=:tila where tilausnro=:tilausnro');
     $query->bindValue(':tilausnro',$tilausnro, PDO::PARAM_INT);
     $query->bindValue(':asid',$asid, PDO::PARAM_INT);
-    //$query->bindValue(':pvm',$pvm, PDO::PARAM_STR);
     $query->bindValue(':tila', $tila, PDO::PARAM_STR);
     $query->execute();
     header('HTTP/1.1 200 OK');
