@@ -51,7 +51,10 @@ INSERT INTO tilaus VALUES (3,2,'2021-11-09 08:45:02','M');
 INSERT INTO tilaus VALUES (4,3,'2021-11-01 12:51:09','T');
 
 /* TILAUSRIVI */
-CREATE TABLE tilausrivi (tilausnro INTEGER NOT NULL,kirjaid INTEGER, kpl INTEGER,CONSTRAINT tilausrivi_fk FOREIGN KEY (tilausnro) REFERENCES tilaus(tilausnro), CONSTRAINT tilausrivi_kirja_fk FOREIGN KEY (kirjaid)   REFERENCES kirja (kirjaid));
+CREATE TABLE tilausrivi (tilausnro INTEGER NOT NULL,kirjaid INTEGER, kpl INTEGER,
+                         PRIMARY KEY(tilausnro, kirjaid),
+                         CONSTRAINT tilausrivi_fk FOREIGN KEY (tilausnro) REFERENCES tilaus(tilausnro), 
+                         CONSTRAINT tilausrivi_kirja_fk FOREIGN KEY (kirjaid) REFERENCES kirja (kirjaid));
 INSERT INTO tilausrivi VALUES (1,1,2); 
 INSERT INTO tilausrivi VALUES (2,6,1);
 INSERT INTO tilausrivi VALUES (2,11,2);
@@ -64,4 +67,3 @@ INSERT INTO tilausrivi VALUES (4,2,1);
 /* ADMIN */
 CREATE TABLE user (userid integer primary key auto_increment,firstname VARCHAR(50), lastname VARCHAR(50), username VARCHAR(50),password VARCHAR(10));
 INSERT INTO user VALUES (1, 'Iso','Pomo','admin','admin'); 
-

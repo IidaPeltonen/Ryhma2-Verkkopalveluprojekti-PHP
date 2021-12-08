@@ -1,6 +1,5 @@
 <?php
 
-//EI TOIMI, MILLÄ VARMISTETAAN ETTÄ LISÄÄ VAIN OIKEALLE TILAUSNUMEROLLE?
 require_once './inc/headers.php';
 require_once './inc/functions.php';
 
