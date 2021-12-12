@@ -9,13 +9,12 @@ $tila = filter_var($input->tila,FILTER_SANITIZE_STRING);
 
 try {
     $db= openDb();
-    $query = $db->prepare('update tilaus set asid=:asid,tila=:tila where tilausnro=:tilausnro');
+    $query = $db->prepare('update tilaus set tila=:tila where tilausnro=:tilausnro');
     $query->bindValue(':tilausnro',$tilausnro, PDO::PARAM_INT);
-    $query->bindValue(':asid',$asid, PDO::PARAM_INT);
     $query->bindValue(':tila', $tila, PDO::PARAM_STR);
     $query->execute();
     header('HTTP/1.1 200 OK');
-    $data = array('tilausnro' => $tilausnro, 'asid' => $asid,  'tila' => $tila);
+    $data = array('tilausnro' => $tilausnro, 'tila' => $tila);
     print json_encode($data);
 } catch (PDOException $pdoex) {
     returnError($pdoex);
