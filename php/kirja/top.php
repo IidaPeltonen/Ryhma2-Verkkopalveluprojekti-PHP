@@ -6,8 +6,7 @@ require_once '../../inc/functions.php';
 try {
     $db= openDb();
     selectAsJson($db, 
-    'SELECT ROW_NUMBER() over(order by sum(kpl) desc ) as rownum, 
-    kirja.kirjaid, kirjanimi,kirjailija, vuosi, kieli, kustantaja, kuvaus, hinta, 
+    'SELECT kirja.kirjaid, kirjanimi,kirjailija, vuosi, kieli, kustantaja, kuvaus, hinta, 
     saldo, kuva, SUM(kpl) AS SUM
     FROM tilausrivi, kirja
     where kirja.kirjaid = tilausrivi.kirjaid
