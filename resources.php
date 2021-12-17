@@ -1,5 +1,5 @@
 <?php
-
+// firebase\JWT käyttöön.
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
