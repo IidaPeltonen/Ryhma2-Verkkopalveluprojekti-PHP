@@ -1,5 +1,5 @@
 <?php
-
+// 
 use Firebase\JWT\JWT;
 
 require_once 'inc/functions.php';

@@ -1,4 +1,5 @@
 <?php
+//Headereiden määrittelyt.
 //firebase
 include('../../fb/BeforeValidException.php');
 include('../../fb/ExpiredException.php');
