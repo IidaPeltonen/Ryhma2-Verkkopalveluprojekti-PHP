@@ -3,7 +3,7 @@
 
 // Tämä funktio luo tietokantayhteyden.
 function openDb(): object {
-    $ini= parse_ini_file("../../config.ini", true);
+    $ini= parse_ini_file("./config.ini", true);
     $host = $ini['host'];
     $database = $ini['database'];
     $user = $ini['user'];

@@ -1,12 +1,12 @@
 <?php
 //Headereiden määrittelyt.
 //firebase
-include('../../fb/BeforeValidException.php');
-include('../../fb/ExpiredException.php');
-include('../../fb/JWK.php');
-include('../../fb/JWT.php');
-include('../../fb/Key.php');
-include('../../fb/SignatureInvalidException.php');
+include('./fb/BeforeValidException.php');
+include('./fb/ExpiredException.php');
+include('./fb/JWK.php');
+include('./fb/JWT.php');
+include('./fb/Key.php');
+include('./fb/SignatureInvalidException.php');
 
 header('Access-Control-Allow-Origin: ' . $_SERVER['HTTP_ORIGIN']);
 header('Access-Control-Allow-Credentials: true');
