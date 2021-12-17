@@ -3,8 +3,8 @@
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-require_once 'inc/functions.php';
-require_once 'inc/headers.php';
+require_once '../../inc/functions.php';
+require_once '../../inc/headers.php';
 
 //Haetaan otsikot pyynnöstä
 //Kommentissa vaihtoehtoiset otsikkosijainnit, jotka eivät esim. xamppin kanssa taida toimia

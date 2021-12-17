@@ -3,8 +3,8 @@
 // firebase\JWT käyttöön.
 use Firebase\JWT\JWT;
 
-require_once 'inc/functions.php';
-require_once 'inc/headers.php';
+require_once '../../inc/functions.php';
+require_once '../../inc/headers.php';
 
 //Tarkistetaan tuleeko palvelimelle basic login tiedot.
 if (isset($_SERVER['PHP_AUTH_USER'])) {
