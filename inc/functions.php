@@ -3,7 +3,7 @@
 
 // Tämä funktio luo tietokantayhteyden.
 function openDb(): object {
-    $ini= parse_ini_file("./config.ini", true);
+    $ini= parse_ini_file("../../config.ini", true);
     $host = $ini['host'];
     $database = $ini['database'];
     $user = $ini['user'];
@@ -18,6 +18,11 @@ function selectAsJson(object $db,string $sql): void {
     $results = $query->fetchAll(PDO::FETCH_ASSOC);
     header('HTTP/1.1 200 OK');
     echo json_encode($results);
+}
+
+function executeInsert(object $db, string $sql): int {
+    $query = $db->query($sql);
+    return  $db->lastInsertId();
 }
 // Funktio, virhetilanteita varten. Palautetaan 500 internal server error.
 function returnError(PDOException $pdoex): void {
