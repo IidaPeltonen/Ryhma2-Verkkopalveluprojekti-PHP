@@ -2,7 +2,9 @@
 
 require_once '../../inc/headers.php';
 require_once '../../inc/functions.php';
-
+//avataan tietokantaan yhteys
+//Suoritetaan selectAsJson-funktio, jonka avulla haetaan top7-myydyimmät kirjat
+//jos menee catchiin, palautetaan error
 try {
     $db= openDb();
     selectAsJson($db, 

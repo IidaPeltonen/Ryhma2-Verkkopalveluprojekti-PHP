@@ -3,11 +3,17 @@ require_once '../../inc/headers.php';
 require_once '../../inc/functions.php';
 
 $input = json_decode(file_get_contents('php://input'));
+// sanitoidaan inputit
 $firstname = filter_var($input->firstname,FILTER_SANITIZE_STRING);
 $lastname = filter_var($input->lastname,FILTER_SANITIZE_STRING);
 $username = filter_var($input->username,FILTER_SANITIZE_STRING);
 $password = filter_var($input->password,FILTER_SANITIZE_STRING);
-
+//avataan tietokantaan yhteys
+//Valmistellaan sql-lause, jolla lisätään käyttäjä
+//Parametrisoidaan
+//Tehdään lisäys tietokantaan
+//Palautetaan 200 OK
+//jos menee catchiin, palautetaan error
 try {
     $db= openDb();    
     $query = $db->prepare('insert into user (firstname, lastname, username, password) values (:firstname, :lastname, :username, :password)');

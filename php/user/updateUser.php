@@ -3,12 +3,18 @@ require_once '../../inc/headers.php';
 require_once '../../inc/functions.php';
 
 $input = json_decode(file_get_contents('php://input'));
+// sanitoidaan inputit
 $userid = filter_var($input->userid,FILTER_SANITIZE_NUMBER_INT);
 $firstname = filter_var($input->firstname,FILTER_SANITIZE_STRING);
 $lastname = filter_var($input->lastname,FILTER_SANITIZE_STRING);
 $username = filter_var($input->username,FILTER_SANITIZE_STRING);
 $password = filter_var($input->password,FILTER_SANITIZE_STRING);
-
+//avataan tietokantaan yhteys
+//Valmistellaan sql-lause, jossa päivitetään käyttäjän tiedot
+//Parametrisoidaan
+//Viedään tiedot tietokantaan
+//Palautetaan 200 OK
+//jos menee catchiin, palautetaan error
 try {
     $db= openDb();
     $query = $db->prepare('update user set userid=:userid,firstname=:firstname, lastname=:lastname, 
