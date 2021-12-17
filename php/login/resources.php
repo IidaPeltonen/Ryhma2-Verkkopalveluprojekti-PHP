@@ -7,8 +7,7 @@ require_once '../../inc/functions.php';
 require_once '../../inc/headers.php';
 
 //Haetaan otsikot pyynnöstä
-//Kommentissa vaihtoehtoiset otsikkosijainnit, jotka eivät esim. xamppin kanssa taida toimia
-$requestHeaders =  apache_request_headers(); //$_SERVER['Authorization'] tai $_SERVER['HTTP_AUTHORIZATION'])
+$requestHeaders =  apache_request_headers();
 
 //Onko auth header olemassa?
 if( isset( $requestHeaders['authorization'] ) ){
@@ -26,12 +25,12 @@ if( isset( $requestHeaders['authorization'] ) ){
             //Tarkistetaan ja dekoodataan token. Jo ei validi, siirtyy catchiin.
             $decoded = JWT::decode($token, new Key(base64_encode('mysecret'), 'HS256')  );
 
-            //Onnistunut dekoodaus sisältää sub-kentän, jossa käyttäjänimi
+            //Onnistunut dekoodaus sisältää sub-kentän, jossa käyttäjänimi.
             $username = $decoded->sub;
 
-            //Lähetetään clientille ykstyisen resurssi, koska oikeus tarkistettu
+            //Lähetetään clientille ykstyisen resurssi, koska oikeus tarkistettu.
             echo  json_encode( array("message"=>"Moi ".$username ."!") ); 
-            
+            //Catch mahdollisten virhetilanteiden varalta.
         }catch(Exception ){
             echo  json_encode( array("message"=>"Ei käyttöoikeutta!") );
         }

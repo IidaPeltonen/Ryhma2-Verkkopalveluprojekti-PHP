@@ -19,7 +19,7 @@ function selectAsJson(object $db,string $sql): void {
     header('HTTP/1.1 200 OK');
     echo json_encode($results);
 }
-
+// Funktio, tilauksen tekemiseen.
 function executeInsert(object $db, string $sql): int {
     $query = $db->query($sql);
     return  $db->lastInsertId();
